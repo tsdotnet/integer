@@ -1,20 +1,21 @@
+"use strict";
 /*!
  * @author electricessence / https://github.com/electricessence/
  * Licensing: MIT
  */
-import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
-import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
-
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const ArgumentException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentException"));
+const ArgumentOutOfRangeException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentOutOfRangeException"));
 function integer(n) {
     return Math.floor(n);
 }
 /* eslint-disable no-inner-declarations,@typescript-eslint/no-namespace */
-(function(integer) {
+(function (integer) {
     /* tslint:disable:no-bitwise */
     integer.MAX_32_BIT = 2147483647;
     integer.MAX_VALUE = 9007199254740991;
     const NUMBER = 'number';
-
     /**
      * Converts any number to its 32bit counterpart.
      * Throws if conversion is not possible.
@@ -23,10 +24,10 @@ function integer(n) {
      */
     function as32Bit(n) {
         const result = n | 0;
-        if(isNaN(n))
-            throw new ArgumentException('n', 'is not a number.');
-        if(n !== -1 && result === -1)
-            throw new ArgumentOutOfRangeException('n', 'is too large to be a 32 bit integer.');
+        if (isNaN(n))
+            throw new ArgumentException_1.default('n', 'is not a number.');
+        if (n !== -1 && result === -1)
+            throw new ArgumentOutOfRangeException_1.default('n', 'is too large to be a 32 bit integer.');
         return result;
     }
     integer.as32Bit = as32Bit;
@@ -56,8 +57,8 @@ function integer(n) {
      */
     function assert(n, argumentName) {
         const i = is(n);
-        if(!i)
-            throw new ArgumentException(argumentName || 'n', 'must be a integer.');
+        if (!i)
+            throw new ArgumentException_1.default(argumentName || 'n', 'must be a integer.');
         return i;
     }
     integer.assert = assert;
@@ -68,9 +69,9 @@ function integer(n) {
      * @returns {boolean}
      */
     function assertZeroOrGreater(n, argumentName) {
-        const i = assert(n, argumentName) && n>=0;
-        if(!i)
-            throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
+        const i = assert(n, argumentName) && n >= 0;
+        if (!i)
+            throw new ArgumentOutOfRangeException_1.default(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
         return i;
     }
     integer.assertZeroOrGreater = assertZeroOrGreater;
@@ -81,12 +82,12 @@ function integer(n) {
      * @returns {boolean}
      */
     function assertPositive(n, argumentName) {
-        const i = assert(n, argumentName) && n>0;
-        if(!i)
-            throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be greater than zero.');
+        const i = assert(n, argumentName) && n > 0;
+        if (!i)
+            throw new ArgumentOutOfRangeException_1.default(argumentName || 'n', n, 'must be greater than zero.');
         return i;
     }
     integer.assertPositive = assertPositive;
 })(integer || (integer = {}));
-export default integer;
+exports.default = integer;
 //# sourceMappingURL=integer.js.map
