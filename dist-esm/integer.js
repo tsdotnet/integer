@@ -4,17 +4,15 @@
  */
 import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
 import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
-
 function integer(n) {
     return Math.floor(n);
 }
 /* eslint-disable no-inner-declarations,@typescript-eslint/no-namespace */
-(function(integer) {
+(function (integer) {
     /* tslint:disable:no-bitwise */
     integer.MAX_32_BIT = 2147483647;
     integer.MAX_VALUE = 9007199254740991;
     const NUMBER = 'number';
-
     /**
      * Converts any number to its 32bit counterpart.
      * Throws if conversion is not possible.
@@ -23,9 +21,9 @@ function integer(n) {
      */
     function as32Bit(n) {
         const result = n | 0;
-        if(isNaN(n))
+        if (isNaN(n))
             throw new ArgumentException('n', 'is not a number.');
-        if(n !== -1 && result === -1)
+        if (n !== -1 && result === -1)
             throw new ArgumentOutOfRangeException('n', 'is too large to be a 32 bit integer.');
         return result;
     }
@@ -56,7 +54,7 @@ function integer(n) {
      */
     function assert(n, argumentName) {
         const i = is(n);
-        if(!i)
+        if (!i)
             throw new ArgumentException(argumentName || 'n', 'must be a integer.');
         return i;
     }
@@ -68,8 +66,8 @@ function integer(n) {
      * @returns {boolean}
      */
     function assertZeroOrGreater(n, argumentName) {
-        const i = assert(n, argumentName) && n>=0;
-        if(!i)
+        const i = assert(n, argumentName) && n >= 0;
+        if (!i)
             throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
         return i;
     }
@@ -81,8 +79,8 @@ function integer(n) {
      * @returns {boolean}
      */
     function assertPositive(n, argumentName) {
-        const i = assert(n, argumentName) && n>0;
-        if(!i)
+        const i = assert(n, argumentName) && n > 0;
+        if (!i)
             throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be greater than zero.');
         return i;
     }
