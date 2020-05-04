@@ -5,3 +5,6 @@
 [![npm version](https://img.shields.io/npm/v/@tsdotnet/integer.svg?style=flat-square)](https://www.npmjs.com/package/@tsdotnet/integer)
 
 Utility for processing and asserting integers.
+
+## Docs
+[tsdotnet.github.io/[package-name]](https://tsdotnet.github.io/[package-name]/)
