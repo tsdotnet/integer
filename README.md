@@ -7,4 +7,5 @@
 Utility for processing and asserting integers.
 
 ## Docs
+
 [tsdotnet.github.io/integer](https://tsdotnet.github.io/integer/)
