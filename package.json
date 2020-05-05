@@ -52,6 +52,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@tsdotnet/exceptions": "^1.0.5"
+    "@tsdotnet/exceptions": "^1.0.12"
   }
 }
