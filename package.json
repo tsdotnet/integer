@@ -52,6 +52,7 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "@tsdotnet/exceptions": "^1.0.14"
+    "@tsdotnet/exceptions": "^1.0.14",
+    "tslib": "^2.0.0"
   }
 }
