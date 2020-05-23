@@ -1,6 +1,6 @@
 {
   "name": "@tsdotnet/integer",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Utility for processing and asserting integers.",
   "author": "electricessence",
   "license": "MIT",
