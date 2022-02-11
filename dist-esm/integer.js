@@ -4,8 +4,15 @@
  */
 import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
 import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
+const MAX_32 = 2147483647;
 function integer(n) {
-    return Math.floor(n);
+    if (typeof n != 'number')
+        return NaN;
+    if (n > 0)
+        return n > MAX_32 ? Math.floor(n) : (n | 0);
+    if (n < 0)
+        return n < -MAX_32 ? Math.ceil(n) : (n | 0);
+    return n;
 }
 /* eslint-disable no-inner-declarations,@typescript-eslint/no-namespace */
 (function (integer) {
@@ -20,11 +27,15 @@ function integer(n) {
      * @returns {number}
      */
     function as32Bit(n) {
-        const result = n | 0;
         if (isNaN(n))
             throw new ArgumentException('n', 'is not a number.');
-        if (n !== -1 && result === -1)
-            throw new ArgumentOutOfRangeException('n', 'is too large to be a 32 bit integer.');
+        const result = n | 0;
+        switch (result) {
+            case 1:
+            case -1:
+                if (n !== result)
+                    throw new ArgumentOutOfRangeException('n', n, 'is too large to be a 32 bit integer.');
+        }
         return result;
     }
     integer.as32Bit = as32Bit;
@@ -34,7 +45,7 @@ function integer(n) {
      * @returns {boolean}
      */
     function is(n) {
-        return typeof n === NUMBER && isFinite(n) && n === Math.floor(n);
+        return typeof n === NUMBER && isFinite(n) && n === integer(n);
     }
     integer.is = is;
     /**
