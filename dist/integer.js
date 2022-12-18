@@ -5,8 +5,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const ArgumentException_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/exceptions/dist/ArgumentException"));
-const ArgumentOutOfRangeException_1 = (0, tslib_1.__importDefault)(require("@tsdotnet/exceptions/dist/ArgumentOutOfRangeException"));
+const ArgumentException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentException"));
+const ArgumentOutOfRangeException_1 = tslib_1.__importDefault(require("@tsdotnet/exceptions/dist/ArgumentOutOfRangeException"));
 const MAX_32 = 2147483647;
 function integer(n) {
     if (typeof n != 'number')
