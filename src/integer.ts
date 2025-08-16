@@ -16,7 +16,7 @@ function integer (n: number): number
 	return n;
 }
 
-/* eslint-disable no-inner-declarations,@typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/no-namespace */
 namespace integer
 {
 	/* tslint:disable:no-bitwise */

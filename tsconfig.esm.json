@@ -2,8 +2,7 @@
   "extends": "./tsconfig",
   "compilerOptions": {
     "declaration": false,
-    "module": "es2015",
-    "outDir": "dist-esm"
+    "module": "es2022"
   },
   "include": [
     "src/**/*"

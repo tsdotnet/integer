@@ -14,7 +14,7 @@ function integer(n) {
         return n < -MAX_32 ? Math.ceil(n) : (n | 0);
     return n;
 }
-/* eslint-disable no-inner-declarations,@typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/no-namespace */
 (function (integer) {
     /* tslint:disable:no-bitwise */
     integer.MAX_32_BIT = 2147483647;
