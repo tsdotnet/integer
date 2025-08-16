@@ -1,10 +1,8 @@
-"use strict";
 /*!
  * @author electricessence / https://github.com/electricessence/
  * Licensing: MIT
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-const exceptions_1 = require("@tsdotnet/exceptions");
+import { ArgumentException, ArgumentOutOfRangeException } from '@tsdotnet/exceptions';
 const MAX_32 = 2147483647;
 function integer(n) {
     if (typeof n != 'number')
@@ -29,13 +27,13 @@ function integer(n) {
      */
     function as32Bit(n) {
         if (isNaN(n))
-            throw new exceptions_1.ArgumentException('n', 'is not a number.');
+            throw new ArgumentException('n', 'is not a number.');
         const result = n | 0;
         switch (result) {
             case 1:
             case -1:
                 if (n !== result)
-                    throw new exceptions_1.ArgumentOutOfRangeException('n', n, 'is too large to be a 32 bit integer.');
+                    throw new ArgumentOutOfRangeException('n', n, 'is too large to be a 32 bit integer.');
         }
         return result;
     }
@@ -67,7 +65,7 @@ function integer(n) {
     function assert(n, argumentName) {
         const i = is(n);
         if (!i)
-            throw new exceptions_1.ArgumentException(argumentName || 'n', 'must be a integer.');
+            throw new ArgumentException(argumentName || 'n', 'must be a integer.');
         return i;
     }
     integer.assert = assert;
@@ -80,7 +78,7 @@ function integer(n) {
     function assertZeroOrGreater(n, argumentName) {
         const i = assert(n, argumentName) && n >= 0;
         if (!i)
-            throw new exceptions_1.ArgumentOutOfRangeException(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
+            throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
         return i;
     }
     integer.assertZeroOrGreater = assertZeroOrGreater;
@@ -93,10 +91,10 @@ function integer(n) {
     function assertPositive(n, argumentName) {
         const i = assert(n, argumentName) && n > 0;
         if (!i)
-            throw new exceptions_1.ArgumentOutOfRangeException(argumentName || 'n', n, 'must be greater than zero.');
+            throw new ArgumentOutOfRangeException(argumentName || 'n', n, 'must be greater than zero.');
         return i;
     }
     integer.assertPositive = assertPositive;
 })(integer || (integer = {}));
-exports.default = integer;
+export default integer;
 //# sourceMappingURL=integer.js.map
