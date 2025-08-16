@@ -1,0 +1,112 @@
+/*!
+ * @author electricessence / https://github.com/electricessence/
+ * Licensing: MIT
+ */
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "@tsdotnet/exceptions"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    const exceptions_1 = require("@tsdotnet/exceptions");
+    const MAX_32 = 2147483647;
+    function integer(n) {
+        if (typeof n != 'number')
+            return NaN;
+        if (n > 0)
+            return n > MAX_32 ? Math.floor(n) : (n | 0);
+        if (n < 0)
+            return n < -MAX_32 ? Math.ceil(n) : (n | 0);
+        return n;
+    }
+    /* eslint-disable @typescript-eslint/no-namespace */
+    (function (integer) {
+        /* tslint:disable:no-bitwise */
+        integer.MAX_32_BIT = 2147483647;
+        integer.MAX_VALUE = 9007199254740991;
+        const NUMBER = 'number';
+        /**
+         * Converts any number to its 32bit counterpart.
+         * Throws if conversion is not possible.
+         * @param n
+         * @returns {number}
+         */
+        function as32Bit(n) {
+            if (isNaN(n))
+                throw new exceptions_1.ArgumentException('n', 'is not a number.');
+            const result = n | 0;
+            switch (result) {
+                case 1:
+                case -1:
+                    if (n !== result)
+                        throw new exceptions_1.ArgumentOutOfRangeException('n', n, 'is too large to be a 32 bit integer.');
+            }
+            return result;
+        }
+        integer.as32Bit = as32Bit;
+        /**
+         * Returns true if the value is an integer.
+         * @param n
+         * @returns {boolean}
+         */
+        function is(n) {
+            return typeof n === NUMBER && isFinite(n) && n === integer(n);
+        }
+        integer.is = is;
+        /**
+         * Returns true if the value is within a 32 bit range.
+         * @param n
+         * @returns {boolean}
+         */
+        function is32Bit(n) {
+            return n === (n | 0);
+        }
+        integer.is32Bit = is32Bit;
+        /**
+         * Throws if not an integer.
+         * @param n
+         * @param argumentName
+         * @returns {boolean}
+         */
+        function assert(n, argumentName) {
+            const i = is(n);
+            if (!i)
+                throw new exceptions_1.ArgumentException(argumentName || 'n', 'must be a integer.');
+            return i;
+        }
+        integer.assert = assert;
+        /**
+         * Throws if less than zero.
+         * @param n
+         * @param argumentName
+         * @returns {boolean}
+         */
+        function assertZeroOrGreater(n, argumentName) {
+            const i = assert(n, argumentName) && n >= 0;
+            if (!i)
+                throw new exceptions_1.ArgumentOutOfRangeException(argumentName || 'n', n, 'must be a valid integer greater than or equal to zero.');
+            return i;
+        }
+        integer.assertZeroOrGreater = assertZeroOrGreater;
+        /**
+         * Throws if not greater than zero.
+         * @param n
+         * @param argumentName
+         * @returns {boolean}
+         */
+        function assertPositive(n, argumentName) {
+            const i = assert(n, argumentName) && n > 0;
+            if (!i)
+                throw new exceptions_1.ArgumentOutOfRangeException(argumentName || 'n', n, 'must be greater than zero.');
+            return i;
+        }
+        integer.assertPositive = assertPositive;
+    })(integer || (integer = {}));
+    exports.default = integer;
+});
+//# sourceMappingURL=integer.js.map

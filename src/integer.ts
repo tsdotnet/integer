@@ -3,8 +3,7 @@
  * Licensing: MIT
  */
 
-import ArgumentException from '@tsdotnet/exceptions/dist/ArgumentException';
-import ArgumentOutOfRangeException from '@tsdotnet/exceptions/dist/ArgumentOutOfRangeException';
+import {ArgumentException, ArgumentOutOfRangeException} from '@tsdotnet/exceptions';
 
 const MAX_32 = 2147483647;
 
