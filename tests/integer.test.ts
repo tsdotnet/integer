@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import {expect} from 'chai';
+import { describe, it, expect } from 'vitest';
 import integer from '../src/integer';
 
 const TEST_FLOAT = 10.915, TEST_INT = 10, MAX = 9007199254740991;
@@ -42,8 +42,8 @@ describe('.as32Bit(value)', () => {
 	});
 
 	it('should throw not possible to convert', () => {
-		expect(() => integer.as32Bit(MAX)).to.throw();
-		expect(() => integer.as32Bit(-MAX)).to.throw();
+		expect(() => integer.as32Bit(MAX)).toThrow();
+		expect(() => integer.as32Bit(-MAX)).toThrow();
 	});
 });
 
@@ -54,45 +54,45 @@ describe('.is(value)', () => {
 
 		expect(
 			integer.is32Bit(integer.MAX_32_BIT))
-			.to.be.true;
+			.toBe(true);
 
 		expect(
 			integer.is32Bit(integer.MAX_32_BIT + 0.1))
-			.to.be.false;
+			.toBe(false);
 
 		expect(
 			integer.is32Bit(integer.MAX_32_BIT + 1))
-			.to.be.false;
+			.toBe(false);
 
 		function baseTests (fn: (n: number) => boolean): void
 		{
 			expect(
 				fn('1' as any))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn('test' as any))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn(NaN))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn(Infinity))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn(-Infinity))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn(TEST_FLOAT))
-				.to.be.false;
+				.toBe(false);
 
 			expect(
 				fn(-TEST_FLOAT))
-				.to.be.false;
+				.toBe(false);
 		}
 	});
 
@@ -102,51 +102,51 @@ describe('.is(value)', () => {
 
 		expect(
 			integer.is(integer.MAX_32_BIT + 1))
-			.to.be.true;
+			.toBe(true);
 
 		expect(
 			integer.is(-MAX))
-			.to.be.true;
+			.toBe(true);
 
 		expect(
 			integer.is(MAX))
-			.to.be.true;
+			.toBe(true);
 
 		function baseTests (fn: (n: number) => boolean): void
 		{
 
 			expect(
 				fn(-0))
-				.to.be.true;
+				.toBe(true);
 
 			expect(
 				fn(-TEST_INT))
-				.to.be.true;
+				.toBe(true);
 
 			expect(
 				fn(TEST_INT))
-				.to.be.true;
+				.toBe(true);
 
 			expect(
 				fn(integer.MAX_32_BIT))
-				.to.be.true;
+				.toBe(true);
 
 			expect(
 				fn(-integer.MAX_32_BIT))
-				.to.be.true;
+				.toBe(true);
 		}
 	});
 });
 
 describe('.assert(value)', () => {
 	it('should detect a number that is not an integer', () => {
-		expect(() => integer.assert(TEST_FLOAT)).to.throw();
-		expect(() => integer.assert(-TEST_FLOAT)).to.throw();
+		expect(() => integer.assert(TEST_FLOAT)).toThrow();
+		expect(() => integer.assert(-TEST_FLOAT)).toThrow();
 	});
 
 	it('should detect a number that is an integer', () => {
-		expect(integer.assert(TEST_INT)).to.be.true;
-		expect(integer.assert(-TEST_INT)).to.be.true;
+		expect(integer.assert(TEST_INT)).toBe(true);
+		expect(integer.assert(-TEST_INT)).toBe(true);
 	});
 });
 
