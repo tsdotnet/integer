@@ -1,8 +1,9 @@
+import { ArgumentException, ArgumentOutOfRangeException } from '@tsdotnet/exceptions';
+
 /*!
  * @author electricessence / https://github.com/electricessence/
  * Licensing: MIT
  */
-import { ArgumentException, ArgumentOutOfRangeException } from '@tsdotnet/exceptions';
 const MAX_32 = 2147483647;
 function integer(n) {
     if (typeof n != 'number')
@@ -60,5 +61,7 @@ function integer(n) {
     }
     integer.assertPositive = assertPositive;
 })(integer || (integer = {}));
-export default integer;
+var integer$1 = integer;
+
+export { integer$1 as default };
 //# sourceMappingURL=integer.js.map
