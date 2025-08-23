@@ -150,3 +150,50 @@ describe('.assert(value)', () => {
 	});
 });
 
+describe('.assertZeroOrGreater(value)', () => {
+	it('should pass for valid positive integers', () => {
+		expect(integer.assertZeroOrGreater(0)).toBe(true);
+		expect(integer.assertZeroOrGreater(1)).toBe(true);
+		expect(integer.assertZeroOrGreater(100)).toBe(true);
+	});
+
+	it('should throw for negative integers', () => {
+		expect(() => integer.assertZeroOrGreater(-1)).toThrow();
+		expect(() => integer.assertZeroOrGreater(-10)).toThrow();
+	});
+
+	it('should throw for non-integers', () => {
+		expect(() => integer.assertZeroOrGreater(1.5)).toThrow();
+		expect(() => integer.assertZeroOrGreater(-1.5)).toThrow();
+	});
+
+	it('should throw with custom argument name', () => {
+		expect(() => integer.assertZeroOrGreater(-1, 'customArg')).toThrow();
+	});
+});
+
+describe('.assertPositive(value)', () => {
+	it('should pass for positive integers', () => {
+		expect(integer.assertPositive(1)).toBe(true);
+		expect(integer.assertPositive(100)).toBe(true);
+	});
+
+	it('should throw for zero', () => {
+		expect(() => integer.assertPositive(0)).toThrow();
+	});
+
+	it('should throw for negative integers', () => {
+		expect(() => integer.assertPositive(-1)).toThrow();
+		expect(() => integer.assertPositive(-10)).toThrow();
+	});
+
+	it('should throw for non-integers', () => {
+		expect(() => integer.assertPositive(1.5)).toThrow();
+		expect(() => integer.assertPositive(-1.5)).toThrow();
+	});
+
+	it('should throw with custom argument name', () => {
+		expect(() => integer.assertPositive(-1, 'customArg')).toThrow();
+	});
+});
+
