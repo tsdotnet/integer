@@ -1,9 +1,9 @@
+# Disabled: NPM org token auth failing with E404 on CI.
+# Publishing locally via `npm publish --access public` until resolved.
 name: npm-publish
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
 

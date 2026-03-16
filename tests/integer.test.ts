@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { describe, it, expect } from 'vitest';
-import integer from '../src/integer';
+import integer from '../src/integer.js';
 
 const TEST_FLOAT = 10.915, TEST_INT = 10, MAX = 9007199254740991;
 

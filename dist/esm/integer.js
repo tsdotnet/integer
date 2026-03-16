@@ -61,7 +61,7 @@ function integer(n) {
     }
     integer.assertPositive = assertPositive;
 })(integer || (integer = {}));
-var integer$1 = integer;
+var integer_default = integer;
 
-export { integer$1 as default };
+export { integer_default as default };
 //# sourceMappingURL=integer.js.map
