@@ -1,4 +1,4 @@
-<a href="https://tsdotnet.github.io/integer/"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/integer@master/assets/banner.svg" alt="@tsdotnet/integer: Integers you can trust. Check and assert whole numbers."></a>
+<a name="banner"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/integer@master/assets/banner.svg" alt="@tsdotnet/integer: Integers you can trust. Check and assert whole numbers."></a>
 
 [![npm version](https://img.shields.io/npm/v/@tsdotnet/integer.svg?style=flat-square)](https://www.npmjs.com/package/@tsdotnet/integer)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tsdotnet/integer/blob/master/LICENSE)
